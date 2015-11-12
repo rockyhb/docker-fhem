@@ -3,10 +3,10 @@ FROM centos:6
 RUN yum -y update
 
 RUN yum -y install \
-  openssh-server \
   perl \
   perl-Compress-Zlib \
   perl-Time-HiRes \
+  perl-URI \
   sudo \
   tar \
 
