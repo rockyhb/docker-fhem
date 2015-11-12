@@ -5,7 +5,7 @@ RUN yum -y update
 RUN yum -y install \
   openssh-server \
   perl \
-  perl-Compress-Zlib
+  perl-Compress-Zlib \
   perl-Time-HiRes \
   sudo \
   tar \
