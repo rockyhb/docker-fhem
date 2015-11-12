@@ -36,7 +36,6 @@ RUN chmod a+x /usr/local/bin/fhem.sh
 COPY fhem.sudo /etc/sudoers.d/fhem
 RUN chmod 0400 /etc/sudoers.d/fhem
 
-# USER fhem
+USER fhem
 
-# ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/fhem.sh"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/fhem.sh"]
