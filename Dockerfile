@@ -1,7 +1,15 @@
 FROM centos:6
 
 RUN yum -y update
-RUN yum -y install perl perl-Time-HiRes tar openssh-server sudo
+
+RUN yum -y install \
+  openssh-server \
+  perl \
+  perl-Compress-Zlib
+  perl-Time-HiRes \
+  sudo \
+  tar \
+
 RUN yum -y clean all
 
 ENV FHEM_HOME /opt/fhem
@@ -21,8 +29,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/
 RUN chmod +x /bin/tini
 
 ADD http://fhem.de/fhem-5.6.tar.gz /usr/local/lib/fhem.tar
-# RUN mkdir -p /usr/share/fhem/ref && cd /usr/share/fhem/ref && tar xf /usr/local/lib/fhem.tar.gz
-
+RUN cd /opt && tar xvf /usr/local/lib/fhem.tar
 
 EXPOSE 22
 EXPOSE 7072

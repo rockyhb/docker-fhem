@@ -5,11 +5,8 @@ set -x
 # Copy default files if target does not yet exists
 
 if [[ ! -e /opt/fhem/.template_copied_DO_NOT_REMOVE ]]; then
-  cd /opt
-  tar xvf /usr/local/lib/fhem.tar
-  cd fhem-5.6
-  cp -rv . /opt/fhem
-  chown -R fhem:fhem /opt/fhem
+  cd /opt/fhem-5.6 && cp -r . /opt/fhem
+  touch /opt/fhem/.template_copied_DO_NOT_REMOVE
 fi
 
 # if `docker run` first argument start with `--` the user is passing fhem launcher arguments
@@ -22,3 +19,4 @@ fi
 
 # As argument is not fhem, assume user want to run his own process, for sample a `bash` shell to explore this image
 exec "$@"
+
