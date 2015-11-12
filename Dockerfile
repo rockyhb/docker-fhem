@@ -27,10 +27,10 @@ RUN mkdir -p /usr/share/fhem/ref && cd /usr/share/fhem/ref
 # for main web interface:
 EXPOSE 80
 
-USER fhem
-
 COPY fhem.sh /usr/local/bin/fhem.sh
 RUN chmod a+x /usr/local/bin/fhem.sh
+
+USER fhem
 
 # ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/fhem.sh"]
 ENTRYPOINT ["/bin/bash"]
