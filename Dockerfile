@@ -21,7 +21,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/
 RUN chmod +x /bin/tini
 
 ADD http://fhem.de/fhem-5.6.tar.gz /usr/local/lib/fhem.tar.gz
-RUN mkdir -p /usr/share/fhem/ref && cd /usr/share/fhem/ref && tar xvf /usr/local/lib/fhem.tar.gz
+RUN mkdir -p /usr/share/fhem/ref && cd /usr/share/fhem/ref && tar xf /usr/local/lib/fhem.tar.gz
 
 
 EXPOSE 22
