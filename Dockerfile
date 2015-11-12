@@ -30,4 +30,3 @@ USER fhem
 COPY fhem.sh /usr/local/bin/fhem.sh
 
 ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/fhem.sh"]
-
