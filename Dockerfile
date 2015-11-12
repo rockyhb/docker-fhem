@@ -1,6 +1,7 @@
 FROM centos:6
 
 RUN yum -y update
+RUN yum -y install perl tar
 RUN yum -y clean all
 
 ENV FHEM_HOME /opt/fhem
