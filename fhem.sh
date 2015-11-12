@@ -1,6 +1,6 @@
 #! /bin/bash
 
-set -e
+set -x
 
 # Copy default files if target does not yet exists
 

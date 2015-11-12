@@ -20,8 +20,8 @@ ENV TINI_VERSION v0.8.3
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
 RUN chmod +x /bin/tini
 
-ADD http://fhem.de/fhem-5.6.tar.gz /usr/local/lib/fhem.tar.gz
-RUN mkdir -p /usr/share/fhem/ref && cd /usr/share/fhem/ref && tar xf /usr/local/lib/fhem.tar.gz
+ADD http://fhem.de/fhem-5.6.tar.gz /usr/local/lib/fhem.tar
+# RUN mkdir -p /usr/share/fhem/ref && cd /usr/share/fhem/ref && tar xf /usr/local/lib/fhem.tar.gz
 
 
 EXPOSE 22
