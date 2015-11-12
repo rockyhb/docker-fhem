@@ -30,5 +30,7 @@ EXPOSE 80
 USER fhem
 
 COPY fhem.sh /usr/local/bin/fhem.sh
+RUN chmod a+x /usr/local/bin/fhem.sh
 
-ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/fhem.sh"]
+# ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/fhem.sh"]
+ENTRYPOINT ["/bin/bash"]
