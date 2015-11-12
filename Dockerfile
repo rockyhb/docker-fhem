@@ -1,7 +1,7 @@
 FROM centos:6
 
 RUN yum -y update
-RUN yum -y install perl tar
+RUN yum -y install perl perl-Time-HiRes tar
 RUN yum -y clean all
 
 ENV FHEM_HOME /opt/fhem
@@ -30,7 +30,7 @@ EXPOSE 80
 COPY fhem.sh /usr/local/bin/fhem.sh
 RUN chmod a+x /usr/local/bin/fhem.sh
 
-USER fhem
+# USER fhem
 
 # ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/fhem.sh"]
 ENTRYPOINT ["/bin/bash"]
