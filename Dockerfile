@@ -1,16 +1,7 @@
-FROM centos:6
+FROM debian:latest
 
-RUN yum -y update
-
-RUN yum -y install \
-  perl \
-  perl-Compress-Zlib \
-  perl-Time-HiRes \
-  perl-URI \
-  sudo \
-  tar \
-
-RUN yum -y clean all
+RUN apt-get --assume-yes update
+RUN apt-get --assume-yes install unzip libdevice-serialport-perl
 
 ENV FHEM_HOME /opt/fhem
 
@@ -19,19 +10,18 @@ ENV FHEM_HOME /opt/fhem
 # ensure you use same uid
 RUN useradd -d "$FHEM_HOME" -u 1000 -m -s /bin/bash fhem
 
-# FHEM home directoy is a volume, so configuration and build history 
-# can be persisted and survive image upgrades
-VOLUME /opt/fhem
-
 # Add Tini
 ENV TINI_VERSION v0.8.3
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
 RUN chmod +x /bin/tini
 
-ADD http://fhem.de/fhem-5.6.tar.gz /usr/local/lib/fhem.tar
-RUN cd /opt && tar xvf /usr/local/lib/fhem.tar
+ADD http://www.dhs-computertechnik.de/downloads/fhem-cvs.tgz /usr/local/lib/fhem.tgz
+RUN cd /opt && tar xvzf /usr/local/lib/fhem.tgz && mv fhem fhem-svn
 
-EXPOSE 22
+# FHEM home directoy is a volume, so configuration and build history 
+# can be persisted and survive image upgrades
+VOLUME /opt/fhem
+
 EXPOSE 7072
 EXPOSE 8083
 EXPOSE 8084
@@ -39,9 +29,6 @@ EXPOSE 8085
 
 COPY fhem.sh /usr/local/bin/fhem.sh
 RUN chmod a+x /usr/local/bin/fhem.sh
-
-COPY fhem.sudo /etc/sudoers.d/fhem
-RUN chmod 0400 /etc/sudoers.d/fhem
 
 USER fhem
 

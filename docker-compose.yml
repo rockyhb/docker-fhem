@@ -1,0 +1,11 @@
+version: '2'
+services:
+  fhem:
+    build: .
+    volumes:
+      - ./fhem:/opt/fhem
+    ports:
+      - "7072:7072"
+      - "8083:8083"
+      - "8084:8084"
+      - "8085:8085"
