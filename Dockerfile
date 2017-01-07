@@ -1,7 +1,7 @@
 FROM debian:latest
 
 RUN apt-get --assume-yes update
-RUN apt-get --assume-yes install unzip libdevice-serialport-perl
+RUN apt-get --assume-yes install libdevice-serialport-perl libjson-perl libany-uri-escape-perl
 
 ENV FHEM_HOME /opt/fhem
 
@@ -22,10 +22,7 @@ RUN cd /opt && tar xvzf /usr/local/lib/fhem.tgz && mv fhem fhem-svn
 # can be persisted and survive image upgrades
 VOLUME /opt/fhem
 
-EXPOSE 7072
-EXPOSE 8083
-EXPOSE 8084
-EXPOSE 8085
+EXPOSE 7072 8083 8084 8085
 
 COPY fhem.sh /usr/local/bin/fhem.sh
 RUN chmod a+x /usr/local/bin/fhem.sh
