@@ -10,6 +10,9 @@ if [[ ! -e /opt/fhem/.template_copied_DO_NOT_REMOVE ]]; then
   touch /opt/fhem/.template_copied_DO_NOT_REMOVE
 fi
 
+# set timezone
+TZ='Europe/Berlin'; export TZ
+
 # if `docker run` first argument start with `--` the user is passing fhem launcher arguments
 if [[ $# -lt 1 ]] || [[ "$1" == "--"* ]]; then
    cd /opt/fhem
