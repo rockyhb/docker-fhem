@@ -16,7 +16,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/
 RUN chmod +x /bin/tini
 
 ADD http://www.dhs-computertechnik.de/downloads/fhem-cvs.tgz /usr/local/lib/fhem.tgz
-RUN cd /opt && tar xvzf /usr/local/lib/fhem.tgz && mv fhem fhem-svn
+RUN cd /opt && tar xvzf /usr/local/lib/fhem.tgz && mv fhem fhem-svn && mkdir /opt/fhem && chown fhem:fhem /opt/fhem
 
 # FHEM home directoy is a volume, so configuration and build history 
 # can be persisted and survive image upgrades
